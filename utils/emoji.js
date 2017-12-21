@@ -10,4 +10,4 @@ export const emojis = [
     {question: '🚫☠️🔪➡️💪', answer: 'what doesn\'t kill you makes you stronger'},
     {question: '🚫🤡🔁', answer: 'stop clowning around'},
     {question: '🐦✋🐦🐦🌳', answer: 'a bird in the hand is worth two in the bush'}
-]
+];
