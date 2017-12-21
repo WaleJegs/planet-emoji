@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { emojis }  from '../utils/emoji.js';
 
@@ -13,17 +13,24 @@ export default class Game extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            emojis: []
+            emojis: [],
+            randomQuestion: 0,
+            score: 0
         };
         this.restartGame = this.restartGame.bind(this);
+        this.pickRandomQuestion = this.pickRandomQuestion.bind(this)
     }
 
     componentDidMount(){
         this.restartGame();
     }
 
+    pickRandomQuestion(arr){
+        return Math.floor(Math.random() * arr.length);
+    }
+
     restartGame(){
-        this.setState({ emojis });
+        this.setState({ emojis, randomQuestion: this.pickRandomQuestion(emojis), score: 0 });
     }
 
     render(){
@@ -41,6 +48,7 @@ export default class Game extends React.Component {
             {
                 this.state.emojis.map((emoji, index) => (<Text key={index}>{emoji.question}</Text>))
             }
+            <Text> SCORE: { this.state.score } </Text>
         </View>);
     }
 }
